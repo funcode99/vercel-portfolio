@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Luthfi Idris | Software Developer</title>
+  <meta name="description" content="Software Developer with 4+ years of experience in Flutter, Next.js, and Node.js. Building scalable mobile and web applications." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #080c10;
+      --bg2: #0d1117;
+      --bg3: #161b22;
+      --border: rgba(255,255,255,0.07);
+      --text: #e6edf3;
+      --muted: #7d8590;
+      --accent: #58a6ff;
+      --accent2: #388bfd;
+      --accent-glow: rgba(88,166,255,0.15);
+      --green: #3fb950;
+      --orange: #f0883e;
+      --card-bg: #0d1117;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    ::-webkit-scrollbar { width: 3px; }
+    ::-webkit-scrollbar-track { background: var(--bg); }
+    ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
+
+    /* GRID BACKGROUND */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(88,166,255,0.025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(88,166,255,0.025) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.2rem 5%;
+      background: rgba(8,12,16,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: var(--text);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .nav-logo-dot {
+      width: 8px; height: 8px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: blink 2.5s infinite;
+    }
+
+    @keyframes blink {
+      0%,100% { opacity:1; } 50% { opacity:0.3; }
+    }
+
+    .nav-links { display: flex; gap: 1.8rem; list-style: none; align-items: center; }
+
+    .nav-links a {
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.87rem;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-cta {
+      background: var(--accent) !important;
+      color: var(--bg) !important;
+      padding: 0.4rem 1rem;
+      border-radius: 6px;
+      font-weight: 600 !important;
+    }
+
+    .nav-cta:hover { background: var(--accent2) !important; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 8rem 5% 5rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-content { max-width: 800px; }
+
+    .hero-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      background: rgba(63,185,80,0.1);
+      border: 1px solid rgba(63,185,80,0.25);
+      color: var(--green);
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.35rem 1rem;
+      border-radius: 100px;
+      margin-bottom: 2rem;
+      animation: fadeUp 0.5s ease both;
+    }
+
+    .hero-eyebrow::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--green);
+      border-radius: 50%;
+      animation: blink 1.8s infinite;
+    }
+
+    .hero h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.03em;
+      margin-bottom: 0.5rem;
+      animation: fadeUp 0.5s 0.08s ease both;
+    }
+
+    .hero-sub {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 1.8rem);
+      font-weight: 600;
+      color: var(--accent);
+      margin-bottom: 1.5rem;
+      animation: fadeUp 0.5s 0.15s ease both;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-desc {
+      max-width: 560px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 2.5rem;
+      animation: fadeUp 0.5s 0.22s ease both;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      animation: fadeUp 0.5s 0.3s ease both;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--bg);
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      text-decoration: none;
+      transition: transform 0.2s, background 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-primary:hover { background: var(--accent2); transform: translateY(-2px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text);
+      padding: 0.75rem 1.6rem;
+      border-radius: 8px;
+      font-weight: 500;
+      font-size: 0.9rem;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: border-color 0.2s, transform 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .btn-ghost:hover { border-color: rgba(255,255,255,0.2); transform: translateY(-2px); }
+
+    .hero-stats {
+      display: flex;
+      gap: 2.5rem;
+      margin-top: 4.5rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--border);
+      animation: fadeUp 0.5s 0.38s ease both;
+      flex-wrap: wrap;
+    }
+
+    .stat { }
+    .stat-num {
+      font-family: 'Syne', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 800;
+      line-height: 1;
+      color: var(--text);
+    }
+
+    .stat-num sup { font-size: 1rem; color: var(--accent); }
+    .stat-label { color: var(--muted); font-size: 0.82rem; margin-top: 0.25rem; }
+
+    /* SECTIONS */
+    section { padding: 6rem 5%; position: relative; z-index: 1; }
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.75rem;
+      font-weight: 500;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.7rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      max-width: 500px;
+    }
+
+    /* ABOUT */
+    .about { background: var(--bg2); }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 5rem;
+      align-items: start;
+      margin-top: 3.5rem;
+    }
+
+    .profile-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      position: sticky;
+      top: 6rem;
+    }
+
+    .profile-avatar {
+      width: 80px; height: 80px;
+      background: linear-gradient(135deg, var(--accent), var(--accent2));
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--bg);
+      margin-bottom: 1.2rem;
+    }
+
+    .profile-name {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.25rem;
+    }
+
+    .profile-role {
+      color: var(--accent);
+      font-size: 0.85rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-info { display: flex; flex-direction: column; gap: 0.7rem; }
+
+    .profile-info-row {
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      font-size: 0.85rem;
+    }
+
+    .profile-info-row .icon {
+      color: var(--muted);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .profile-info-row a { color: var(--accent); text-decoration: none; word-break: break-all; }
+    .profile-info-row a:hover { text-decoration: underline; }
+    .profile-info-row span { color: var(--muted); }
+
+    .about-body p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      margin-bottom: 1rem;
+    }
+
+    .about-body p strong { color: var(--text); font-weight: 500; }
+
+    .skills-section { margin-top: 2.5rem; }
+    .skills-title {
+      font-family: 'Syne', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .skill-group { margin-bottom: 1.2rem; }
+    .skill-group-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .skills-wrap { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+
+    .skill-pill {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--text);
+      padding: 0.28rem 0.75rem;
+      border-radius: 100px;
+      font-size: 0.78rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .skill-pill:hover { border-color: var(--accent); color: var(--accent); }
+    .skill-pill.highlight { border-color: rgba(88,166,255,0.3); color: var(--accent); background: rgba(88,166,255,0.06); }
+
+    /* PROJECTS */
+    .projects-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 3rem;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.2rem;
+    }
+
+    .project-card {
+      background: var(--card-bg);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: border-color 0.3s, transform 0.3s, box-shadow 0.3s;
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      border-color: rgba(88,166,255,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 40px rgba(88,166,255,0.08);
+    }
+
+    .project-card.featured { grid-column: span 2; flex-direction: row; }
+
+    .project-banner {
+      background: var(--bg3);
+      padding: 2.5rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .project-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .project-card:not(.featured) .project-banner {
+      aspect-ratio: 16/7;
+      padding: 2rem;
+    }
+
+    .project-card.featured .project-banner {
+      width: 320px;
+      min-height: 200px;
+    }
+
+    .project-icon {
+      font-size: 2.8rem;
+      line-height: 1;
+      filter: drop-shadow(0 0 20px currentColor);
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* atau cover */
+    }
+
+    .project-body { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
+
+    .project-tags { display: flex; gap: 0.4rem; flex-wrap: wrap; margin-bottom: 0.8rem; }
+
+    .ptag {
+      font-size: 0.7rem;
+      letter-spacing: 0.05em;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      text-transform: uppercase;
+    }
+
+    .ptag-flutter { background: rgba(88,166,255,0.1); color: var(--accent); }
+    .ptag-react { background: rgba(99,219,254,0.1); color: #63dbfe; }
+    .ptag-node { background: rgba(63,185,80,0.1); color: var(--green); }
+    .ptag-next { background: rgba(255,255,255,0.07); color: var(--muted); }
+    .ptag-nest { background: rgba(240,136,62,0.1); color: var(--orange); }
+
+    .project-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .project-company {
+      font-size: 0.78rem;
+      color: var(--accent);
+      margin-bottom: 0.6rem;
+    }
+
+    .project-desc { color: var(--muted); font-size: 0.875rem; line-height: 1.65; flex: 1; }
+
+    .project-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 1.5rem;
+      border-top: 1px solid var(--border);
+      margin-top: auto;
+    }
+
+    .project-metric {
+      font-size: 0.78rem;
+      color: var(--green);
+      font-weight: 500;
+    }
+
+    .project-year { font-size: 0.75rem; color: var(--muted); }
+
+    /* EXPERIENCE */
+    .experience { background: var(--bg2); }
+
+    .exp-timeline { margin-top: 3rem; position: relative; }
+
+    .exp-timeline::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0; bottom: 0;
+      width: 1px;
+      background: var(--border);
+    }
+
+    .exp-item {
+      padding: 0 0 3rem 2.5rem;
+      position: relative;
+    }
+
+    .exp-item:last-child { padding-bottom: 0; }
+
+    .exp-dot {
+      position: absolute;
+      left: -4px;
+      top: 4px;
+      width: 9px; height: 9px;
+      border-radius: 50%;
+      background: var(--accent);
+      border: 2px solid var(--bg2);
+      box-shadow: 0 0 8px var(--accent);
+    }
+
+    .exp-item:not(:first-child) .exp-dot { background: var(--border); box-shadow: none; border-color: var(--bg2); }
+
+    .exp-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.3rem;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .exp-company-name {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+    }
+
+    .exp-period {
+      font-size: 0.78rem;
+      color: var(--muted);
+      background: var(--bg3);
+      padding: 0.2rem 0.7rem;
+      border-radius: 4px;
+      border: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    .exp-role-label {
+      color: var(--accent);
+      font-size: 0.83rem;
+      margin-bottom: 1rem;
+    }
+
+    .exp-location { color: var(--muted); font-size: 0.78rem; }
+
+    .exp-projects { display: flex; flex-direction: column; gap: 1.2rem; }
+
+    .exp-proj {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.2rem;
+    }
+
+    .exp-proj-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.6rem;
+      color: var(--text);
+    }
+
+    .exp-proj ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .exp-proj li {
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.6;
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .exp-proj li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-size: 0.7rem;
+      top: 3px;
+    }
+
+    .highlight-metric { color: var(--green); font-weight: 500; }
+
+    /* CERTS */
+    .certs { }
+    .cert-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; margin-top: 2.5rem; }
+
+    .cert-card {
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 1.3rem;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      transition: border-color 0.2s;
+    }
+
+    .cert-card:hover { border-color: rgba(88,166,255,0.25); }
+
+    .cert-icon {
+      width: 42px; height: 42px;
+      background: rgba(88,166,255,0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .cert-name { font-size: 0.88rem; font-weight: 600; margin-bottom: 0.2rem; }
+    .cert-issuer { font-size: 0.78rem; color: var(--muted); }
+
+    /* CONTACT */
+    .contact { background: var(--bg2); }
+    .contact-inner { max-width: 700px; }
+
+    .contact-email-link {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      display: inline-block;
+      margin: 1.5rem 0 2rem;
+      letter-spacing: -0.02em;
+      border-bottom: 2px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .contact-email-link:hover { border-color: var(--accent); }
+
+    .contact-row {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--bg3);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      padding: 0.65rem 1.2rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+
+    .social-btn:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-2px); }
+
+    /* FOOTER */
+    footer {
+      padding: 2rem 5%;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--muted);
+      font-size: 0.8rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    footer a { color: var(--muted); text-decoration: none; transition: color 0.2s; }
+    footer a:hover { color: var(--accent); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+      .profile-card { position: static; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .project-card.featured { flex-direction: column; grid-column: span 1; }
+      .project-card.featured .project-banner { width: 100%; min-height: auto; aspect-ratio: 16/6; }
+      .cert-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .hero-stats { gap: 1.5rem; }
+      .projects-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+      .exp-timeline::before { display: none; }
+      .exp-item { padding-left: 0; }
+      .exp-dot { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">
+    <div class="nav-logo-dot"></div>
+    Luthfi Idris
+  </a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact" class="nav-cta">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Open to new opportunities</div>
+    <h1>Muhammad<br>Luthfi Idris</h1>
+    <div class="hero-sub">Software Developer · Mobile & Web</div>
+    <p class="hero-desc">
+      4+ years of experience building mobile and web applications using <strong>Flutter</strong>, <strong>Next.js</strong>, and <strong>Node.js</strong>. Bridging design and development — delivering products that are performant, user-friendly, and scalable.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn-primary">View Projects →</a>
+      <a href="https://www.linkedin.com/in/muhammad-luthfi-idris" target="_blank" class="btn-ghost">LinkedIn ↗</a>
+      <a href="https://github.com/funcode99" target="_blank" class="btn-ghost">GitHub ↗</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">4<sup>+</sup></div>
+        <div class="stat-label">Years Experience</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">5<sup>+</sup></div>
+        <div class="stat-label">Production Apps</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">70<sup>%</sup></div>
+        <div class="stat-label">Process Automation</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About Me</div>
+  <div class="about-grid">
+    <div class="reveal">
+      <div class="profile-card">
+        <div class="profile-avatar">ML</div>
+        <div class="profile-name">Muhammad Luthfi Idris</div>
+        <div class="profile-role">Software Developer</div>
+        <div class="profile-info">
+          <div class="profile-info-row">
+            <span class="icon">📍</span>
+            <span>Jakarta, Indonesia</span>
+          </div>
+          <div class="profile-info-row">
+            <span class="icon">📧</span>
+            <a href="mailto:luth.idris.99@gmail.com">luth.idris.99@gmail.com</a>
+          </div>
+          <div class="profile-info-row">
+            <span class="icon">📱</span>
+            <a href="https://wa.me/6281389778668" target="_blank">+62 813-8977-8668</a>
+          </div>
+          <div class="profile-info-row">
+            <span class="icon">🔗</span>
+            <a href="https://www.linkedin.com/in/muhammad-luthfi-idris" target="_blank">linkedin.com/in/muhammad-luthfi-idris</a>
+          </div>
+          <div class="profile-info-row">
+            <span class="icon">💻</span>
+            <a href="https://github.com/funcode99" target="_blank">github.com/funcode99</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-body reveal" style="transition-delay:0.12s">
+      <div class="section-title">Passionate builder<br><span style="color:var(--accent)">bridging design & code</span></div>
+      <br>
+      <p>I'm a Software Developer specializing in <strong>Flutter (Mobile)</strong> and <strong>React/Next.js (Web)</strong>, with experience building enterprise and consumer-facing applications serving millions of users.</p>
+      <p>I believe in clean code, scalable architecture, and seamless user experiences. From building the <strong>Starbucks Indonesia loyalty app</strong> to a <strong>face recognition attendance system</strong>, I bring high standards to every project.</p>
+      <p>I'm also passionate about <strong>mentoring</strong> junior developers, because team growth is an essential part of product success.</p>
+
+      <div class="skills-section">
+        <div class="skills-title">Tech Stack</div>
+        <div class="skill-group">
+          <div class="skill-group-label">Mobile</div>
+          <div class="skills-wrap">
+            <span class="skill-pill highlight">Flutter</span>
+            <span class="skill-pill highlight">Dart</span>
+            <span class="skill-pill">BLoC</span>
+            <span class="skill-pill">Riverpod</span>
+            <span class="skill-pill">GetX</span>
+            <span class="skill-pill">GoRouter</span>
+            <span class="skill-pill">Clean Architecture</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Frontend Web</div>
+          <div class="skills-wrap">
+            <span class="skill-pill highlight">Next.js</span>
+            <span class="skill-pill highlight">React.js</span>
+            <span class="skill-pill">TypeScript</span>
+            <span class="skill-pill">Tailwind CSS</span>
+            <span class="skill-pill">Material-UI</span>
+            <span class="skill-pill">Redux Toolkit</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Backend & Infrastructure</div>
+          <div class="skills-wrap">
+            <span class="skill-pill">Node.js</span>
+            <span class="skill-pill">NestJS</span>
+            <span class="skill-pill">Express.js</span>
+            <span class="skill-pill">PostgreSQL</span>
+            <span class="skill-pill">Socket.io</span>
+            <span class="skill-pill">Firebase</span>
+            <span class="skill-pill">Docker</span>
+            <span class="skill-pill">GitHub Actions</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="projects-header">
+    <div>
+      <div class="section-label">Portfolio</div>
+      <div class="section-title">Featured Projects</div>
+    </div>
+    <a href="https://github.com/funcode99" target="_blank" class="btn-ghost">GitHub ↗</a>
+  </div>
+
+  <div class="projects-grid">
+
+    <!-- Starbucks - Featured -->
+    <div class="project-card featured reveal">
+      <div class="project-banner" style="background: linear-gradient(135deg, #1a2f1a, #0a1f0a);">
+        <div class="project-icon" style="color:#00704a;">☕</div>
+      </div>
+      <div style="display:flex;flex-direction:column;flex:1;">
+        <div class="project-body">
+          <div class="project-tags">
+            <span class="ptag ptag-flutter">Flutter</span>
+            <span class="ptag ptag-flutter">BLoC</span>
+            <span class="ptag ptag-flutter">GoRouter</span>
+            <span class="ptag ptag-flutter">Firebase</span>
+          </div>
+          <div class="project-name">Starbucks Indonesia — Loyalty App</div>
+          <div class="project-company">Esensi Solusi Buana · Jan 2026 – Present</div>
+          <div class="project-desc">Flutter-based loyalty & mobile commerce platform for Starbucks Indonesia, serving millions of active users nationwide. Handles premium membership, transaction management with lock offer handling, payment integration, and deep linking. Built with Clean Architecture, Provider + BLoC for scalable state management.</div>
+        </div>
+        <div class="project-footer">
+          <span class="project-metric">🟢 Millions of active users</span>
+          <span class="project-year">2026</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- TI Learning -->
+    <div class="project-card reveal" style="transition-delay:0.08s">
+      <div class="project-banner" style="background: linear-gradient(135deg, #1a1f2e, #101520);">
+        <div class="project-icon" style="color:#58a6ff;">📚</div>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="ptag ptag-flutter">Flutter</span>
+          <span class="ptag ptag-flutter">Firebase</span>
+          <span class="ptag ptag-flutter">OneSignal</span>
+        </div>
+        <div class="project-name">TI Learning — AI-Powered LMS</div>
+        <div class="project-company">Talent Insider · 2024</div>
+        <div class="project-desc">Scalable multimedia learning platform with 200+ modular screens. Video streaming, audio recording, background services, and real-time content synchronization for uninterrupted learning sessions.</div>
+      </div>
+      <div class="project-footer">
+        <span class="project-metric">⚡ 40% faster delivery</span>
+        <span class="project-year">2024</span>
+      </div>
+    </div>
+
+    <!-- E-Sign -->
+    <div class="project-card reveal" style="transition-delay:0.16s">
+      <div class="project-banner" style="background: linear-gradient(135deg, #2a1f1a, #1f1410);">
+        <div class="project-icon" style="color:#f0883e;">✍️</div>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="ptag ptag-flutter">Flutter</span>
+          <span class="ptag ptag-nest">Socket.IO</span>
+          <span class="ptag ptag-flutter">PDF</span>
+        </div>
+        <div class="project-name">E-Sign — Digital Signature Platform</div>
+        <div class="project-company">Talent Insider · 2024</div>
+        <div class="project-desc">Enterprise-grade digital signature & document management with Clean Architecture. PDF processing, digital signature capture, real-time collaboration via Socket.IO. 50+ reusable UI components.</div>
+      </div>
+      <div class="project-footer">
+        <span class="project-metric">📄 60% faster processing</span>
+        <span class="project-year">2024</span>
+      </div>
+    </div>
+
+    <!-- E-Procurement -->
+    <div class="project-card reveal" style="transition-delay:0.08s">
+      <div class="project-banner" style="background: linear-gradient(135deg, #1f2a1a, #141f10);">
+        <img src="Screenshot 2026-04-26 100824.png" alt="E-Procurement Icon" class="project-icon" style="color:#3fb950;">
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="ptag ptag-react">React</span>
+          <span class="ptag ptag-node">Node.js</span>
+          <span class="ptag ptag-node">PostgreSQL</span>
+        </div>
+        <div class="project-name">E-Procurement — Enterprise Platform</div>
+        <div class="project-company">SISI · 2023</div>
+        <div class="project-desc">Full-stack enterprise procurement platform serving 1000+ users. Automated invoice management, multi-tier approval workflows, and LDAP integration. Reduced invoice processing from 5 days to 1 day.</div>
+      </div>
+      <div class="project-footer">
+        <span class="project-metric">🚀 80% faster invoicing</span>
+        <span class="project-year">2023</span>
+      </div>
+    </div>
+
+    <!-- TI Attendance -->
+    <div class="project-card reveal" style="transition-delay:0.16s">
+      <div class="project-banner" style="background: linear-gradient(135deg, #2a1a2a, #1a101f);">
+        <div class="project-icon" style="color:#bc8cff;">👁️</div>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="ptag ptag-flutter">Flutter</span>
+          <span class="ptag ptag-flutter">ML Kit</span>
+          <span class="ptag ptag-flutter">Riverpod</span>
+        </div>
+        <div class="project-name">TI Attendance — Face Recognition</div>
+        <div class="project-company">Talent Insider · 2024</div>
+        <div class="project-desc">Face detection & geofencing-based attendance system. ML Kit + Google Maps for 99% accuracy. Offline-first with SQLite, WorkManager sync, and 4-level RBAC permissions. Reduced check-in time by 80%.</div>
+      </div>
+      <div class="project-footer">
+        <span class="project-metric">🎯 99% accuracy</span>
+        <span class="project-year">2024</span>
+      </div>
+    </div>
+
+    <!-- XploreU -->
+    <div class="project-card reveal" style="transition-delay:0.24s">
+      <div class="project-banner" style="background: linear-gradient(135deg, #1a1a2e, #0f0f20);">
+        <div class="project-icon" style="color:#58a6ff;">🔍</div>
+      </div>
+      <div class="project-body">
+        <div class="project-tags">
+          <span class="ptag ptag-flutter">Flutter</span>
+          <span class="ptag ptag-nest">NestJS</span>
+          <span class="ptag ptag-nest">Microservices</span>
+        </div>
+        <div class="project-name">XploreU — AI Job Discovery</div>
+        <div class="project-company">Talent Insider · 2025</div>
+        <div class="project-desc">AI-powered job discovery platform with location-based filtering, radar proximity detection, and social networking. 400+ color tokens, 100+ UI components. NestJS microservices backend across 3 core services.</div>
+      </div>
+      <div class="project-footer">
+        <span class="project-metric">👥 10K+ concurrent users</span>
+        <span class="project-year">2025</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="experience" id="experience">
+  <div class="section-label">Career</div>
+  <div class="section-title">Work Experience</div>
+  <div class="section-sub">4+ years of professional experience across leading Indonesian tech companies.</div>
+
+  <div class="exp-timeline">
+
+    <!-- Esensi -->
+    <div class="exp-item reveal">
+      <div class="exp-dot"></div>
+      <div class="exp-meta">
+        <div>
+          <div class="exp-company-name">Esensi Solusi Buana</div>
+          <div class="exp-role-label">Software Engineer · <span class="exp-location">Tangerang, Indonesia</span></div>
+        </div>
+        <span class="exp-period">Jan 2026 – Present</span>
+      </div>
+      <div class="exp-projects">
+        <div class="exp-proj">
+          <div class="exp-proj-name">🟢 Starbucks Indonesia – Loyalty & Mobile Commerce</div>
+          <ul>
+            <li>Developed a Flutter-based loyalty app for Starbucks Indonesia, serving <span class="highlight-metric">millions of active users</span></li>
+            <li>Built premium membership system with exclusive benefits and T&C workflows for loyalty members</li>
+            <li>Implemented transaction management system with lock offer handling & payment integration</li>
+            <li>Applied GoRouter, Provider + BLoC, and Clean Architecture across feature modules</li>
+            <li>Integrated Firebase Analytics, Messaging, Crashlytics, and Deep Linking support</li>
+            <li>Maintained code quality with SonarQube and applied DexGuard obfuscation for Android security</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Talent Insider -->
+    <div class="exp-item reveal" style="transition-delay:0.1s">
+      <div class="exp-dot"></div>
+      <div class="exp-meta">
+        <div>
+          <div class="exp-company-name">Talent Insider</div>
+          <div class="exp-role-label">Mobile Engineer · <span class="exp-location">Jakarta, Indonesia</span></div>
+        </div>
+        <span class="exp-period">Feb 2024 – Jan 2026</span>
+      </div>
+      <div class="exp-projects">
+        <div class="exp-proj">
+          <div class="exp-proj-name">📚 TI Learning – AI-Powered LMS</div>
+          <ul>
+            <li>Architected a scalable multimedia learning platform with <span class="highlight-metric">200+ modular screens</span></li>
+            <li>Built video streaming, audio recording/playback, and background services for uninterrupted learning</li>
+            <li>Accelerated feature delivery by <span class="highlight-metric">40%</span> through component reusability & modular architecture</li>
+            <li>Integrated Firebase deep linking, OneSignal push notifications, and background task scheduling</li>
+          </ul>
+        </div>
+        <div class="exp-proj">
+          <div class="exp-proj-name">✍️ E-Sign – Digital Signature Platform</div>
+          <ul>
+            <li>Enterprise digital signature platform with Clean Architecture — <span class="highlight-metric">100% code maintainability</span></li>
+            <li>PDF processing, digital signature capture, real-time collaboration via Socket.IO</li>
+            <li>Reduced document processing time by <span class="highlight-metric">60%</span></li>
+            <li>50+ reusable UI components with WebView integration</li>
+            <li>Mentored a developer intern for 1 month, enabling independent contributions to production features</li>
+          </ul>
+        </div>
+        <div class="exp-proj">
+          <div class="exp-proj-name">👁️ TI Attendance – Face Recognition & Location-Based</div>
+          <ul>
+            <li>ML Kit face detection + Google Maps geofencing with <span class="highlight-metric">99% accuracy</span></li>
+            <li>Offline-first architecture: SQLite local storage, WorkManager background sync</li>
+            <li>RBAC system with 4 permission levels using Riverpod/Freezed</li>
+            <li>Reduced check-in time by <span class="highlight-metric">80%</span></li>
+          </ul>
+        </div>
+        <div class="exp-proj">
+          <div class="exp-proj-name">🔍 XploreU – AI Job Discovery & Social Networking</div>
+          <ul>
+            <li>Location-based filtering, radar proximity detection, AI-powered CV processing</li>
+            <li>Designed a comprehensive design system with <span class="highlight-metric">400+ color tokens</span> and 100+ reusable UI components</li>
+            <li>Social features: real-time posts feed, polling, @mentions, connection management</li>
+            <li>NestJS/TypeScript microservices backend supporting <span class="highlight-metric">10,000+ concurrent users</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- SISI -->
+    <div class="exp-item reveal" style="transition-delay:0.2s">
+      <div class="exp-dot"></div>
+      <div class="exp-meta">
+        <div>
+          <div class="exp-company-name">Sinergi Informatika Semen Indonesia (SISI)</div>
+          <div class="exp-role-label">Full-Stack Developer · <span class="exp-location">Jakarta, Indonesia</span></div>
+        </div>
+        <span class="exp-period">Jan 2023 – Jan 2024</span>
+      </div>
+      <div class="exp-projects">
+        <div class="exp-proj">
+          <div class="exp-proj-name">🏭 E-Procurement – Enterprise Procurement System</div>
+          <ul>
+            <li>Full-stack platform with React + Node.js + Sequelize serving <span class="highlight-metric">1,000+ users</span></li>
+            <li>Invoice processing reduced from 5 days to <span class="highlight-metric">1 day (80% improvement)</span> with 98% approval accuracy</li>
+            <li>Procurement cycle time cut by <span class="highlight-metric">60%</span>, achieving 95% user adoption rate</li>
+            <li>Real-time reporting dashboard with data visualization, Excel integration, and 25% cost reduction</li>
+          </ul>
+        </div>
+        <div class="exp-proj">
+          <div class="exp-proj-name">✈️ GAIS – Enterprise Travel & General Affair System</div>
+          <ul>
+            <li>Flutter + GetX, Travel Management System for booking flights, trains, and accommodations</li>
+            <li>Multi-level approval workflow with Azure Active Directory OAuth for enterprise SSO</li>
+            <li>Firebase Cloud Messaging real-time notifications, Syncfusion Charts dashboards</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- IT's Buah -->
+    <div class="exp-item reveal" style="transition-delay:0.3s">
+      <div class="exp-dot"></div>
+      <div class="exp-meta">
+        <div>
+          <div class="exp-company-name">IT's Buah</div>
+          <div class="exp-role-label">Mobile Developer · <span class="exp-location">Jakarta, Indonesia</span></div>
+        </div>
+        <span class="exp-period">Jul 2022 – Nov 2022</span>
+      </div>
+      <div class="exp-projects">
+        <div class="exp-proj">
+          <div class="exp-proj-name">🥝 ITs Buah – Detox & Health Program</div>
+          <ul>
+            <li>Health app built with Flutter + GetX for detox programs, supporting mobile & tablet devices</li>
+            <li>Firebase Realtime Database, Dio REST API, multi-step meal planner, BMI calculator</li>
+            <li>E-commerce workflow, local notifications, 15+ screens with Lottie animations & Syncfusion Gauges</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section class="certs">
+  <div class="section-label">Certifications</div>
+  <div class="section-title">Achievements</div>
+  <div class="cert-grid reveal">
+    <div class="cert-card">
+      <div class="cert-icon">📐</div>
+      <div>
+        <div class="cert-name">SOLID Programming Principles</div>
+        <div class="cert-issuer">Dicoding Indonesia</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">☁️</div>
+      <div>
+        <div class="cert-name">Cloud Practitioner Essentials</div>
+        <div class="cert-issuer">Dicoding Indonesia</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner reveal">
+    <div class="section-label">Get in Touch</div>
+    <div class="section-title">Let's work<br><span style="color:var(--accent)">together.</span></div>
+    <p style="color:var(--muted);margin-top:0.75rem;font-size:0.95rem;max-width:460px;">Have an interesting project or want to talk tech? My inbox is always open.</p>
+    <a href="mailto:luth.idris.99@gmail.com" class="contact-email-link">luth.idris.99@gmail.com</a>
+    <div class="contact-row">
+      <a href="mailto:luth.idris.99@gmail.com" class="btn-primary">Send Email →</a>
+      <a href="https://www.linkedin.com/in/muhammad-luthfi-idris" target="_blank" class="social-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        LinkedIn
+      </a>
+      <a href="https://github.com/funcode99" target="_blank" class="social-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+        GitHub
+      </a>
+      <a href="tel:+6281389778668" class="social-btn">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.35 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        +62 813-8977-8668
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <span>© 2025 Muhammad Luthfi Idris. Crafted with care.</span>
+  <a href="#home">Back to top ↑</a>
+</footer>
+
+<script>
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.1 });
+  reveals.forEach(el => io.observe(el));
+
+  // Active nav link
+  const sections = document.querySelectorAll('section[id]');
+  const links = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let cur = '';
+    sections.forEach(s => { if (window.scrollY >= s.offsetTop - 130) cur = s.id; });
+    links.forEach(l => {
+      const isActive = l.getAttribute('href') === '#' + cur;
+      if (!l.classList.contains('nav-cta')) l.style.color = isActive ? '#e6edf3' : '';
+    });
+  });
+</script>
+</body>
+</html>
